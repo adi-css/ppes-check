@@ -1,194 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Postpartum Psychotic Experiences Self-Check</title>
-<style>
-  * {
-    box-sizing: border-box;
-  }
-  html, body {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
-    overflow-y: scroll;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-  }
-  body::-webkit-scrollbar {
-    display: none; /* Hide scrollbar in Chrome/Safari */
-  }
-  .container {
-    max-width: 800px;
-    margin: 40px auto;
-    background: #fff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  }
-  h1 {
-    text-align: center;
-    color: #2b4ea1;
-    margin-bottom: 10px;
-  }
-  p.desc {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 15px;
-    color: #555;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  th, td {
-    border-bottom: 1px solid #e2e2e2;
-    padding: 10px;
-    text-align: left;
-    vertical-align: middle;
-  }
-  th {
-    background-color: #f0f4ff;
-    color: #333;
-  }
-  .rating-group {
-    display: flex;
-    justify-content: space-around;
-  }
-  .rating-btn {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 6px 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #fff;
-  }
-  .rating-btn.selected {
-    background-color: #2b4ea1;
-    color: #fff;
-    border-color: #2b4ea1;
-  }
-  .rating-btn:hover {
-    background-color: #e8eefc;
-  }
-  .buttons {
-    text-align: center;
-    margin-top: 30px;
-  }
-  button {
-    background-color: #2b4ea1;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 15px;
-    cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background-color: #193a7a;
-  }
-  .result {
-    text-align: center;
-    margin-top: 25px;
-    font-weight: bold;
-    font-size: 16px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPES Self-Check</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #a8c0ff, #fbc2eb);
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body::-webkit-scrollbar {
+      display: none;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      text-align: center;
+      padding: 1.2em;
+      font-weight: 600;
+      font-size: 1.3em;
+      color: #2d2d2d;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    .container {
+      max-width: 820px;
+      margin: 2.5em auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 2.5em;
+      color: #333;
+    }
+    h2 {
+      text-align: center;
+      color: #2b2b2b;
+      margin-top: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    th, td {
+      padding: 0.7em;
+      text-align: left;
+      font-size: 0.95em;
+    }
+    th {
+      background: #f1f1f1;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+    .rating {
+      display: flex;
+      justify-content: center;
+      gap: 0.4em;
+    }
+    .rating button {
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .rating button:hover {
+      border-color: #7b61ff;
+    }
+    .rating button.active {
+      background: #7b61ff;
+      color: white;
+      transform: scale(1.1);
+      border-color: #7b61ff;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 2em;
+    }
+    .buttons button {
+      background: #7b61ff;
+      color: white;
+      border: none;
+      padding: 0.8em 1.6em;
+      border-radius: 30px;
+      margin: 0 0.6em;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .buttons button:hover {
+      background: #5e49cc;
+      transform: translateY(-2px);
+    }
+    .result {
+      margin-top: 2em;
+      text-align: center;
+      padding: 1.2em;
+      border-radius: 15px;
+      font-weight: 600;
+      color: #333;
+      display: none;
+    }
+    .low { background: #d4f8d4; }
+    .mild { background: #fff5cc; }
+    .high { background: #ffd6d6; }
+    footer {
+      text-align: center;
+      font-size: 0.85em;
+      color: #555;
+      margin-top: 2.5em;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🧠 Postpartum Psychotic Experiences Self-Check</h1>
-    <p class="desc">This is not a diagnostic test. It’s for self-reflection and awareness only.<br>
-    If you or someone you know has hallucinations, delusional thoughts, confusion, or thoughts of harm, seek professional or emergency help immediately.</p>
+  <header>
+    🧠 Postpartum Psychotic Experiences Self-Check (PPES-Inspired)
+  </header>
 
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Statement</th>
-          <th colspan="5" style="text-align:center;">Rating (0–4)</th>
-        </tr>
-      </thead>
-      <tbody id="survey-table"></tbody>
+  <div class="container">
+    <h2>Self-Reflection Survey</h2>
+    <p><strong>Instructions:</strong> Over the past few weeks (since childbirth), how often have you experienced the following?<br>Rate each item from <b>0 = Never</b> to <b>4 = Always</b>.</p>
+    <table id="survey">
+      <tr><th>#</th><th>Statement</th><th>Rating</th></tr>
     </table>
 
     <div class="buttons">
-      <button id="calc">Calculate</button>
-      <button id="clear">Clear</button>
-      <button onclick="window.print()">Print</button>
+      <button id="submitBtn">Submit</button>
+      <button id="downloadBtn">Download Results</button>
+      <button id="clearBtn">Clear</button>
     </div>
 
     <div id="result" class="result"></div>
+
+    <footer>
+      <p>This is not a diagnostic test. It’s for self-reflection and awareness only.<br>If you or someone you know has hallucinations, delusional thoughts, confusion, or thoughts of harm, seek professional or emergency help immediately.</p>
+    </footer>
   </div>
 
-<script>
-const statements = [
-  "I’ve felt unusually confused or disoriented about time, place, or people.",
-  "I’ve noticed or heard things that others said they couldn’t see or hear.",
-  "I’ve felt that people or forces were trying to control my thoughts or actions.",
-  "My thoughts have seemed jumbled, racing, or disconnected.",
-  "I’ve believed things others told me were unlikely or untrue.",
-  "I’ve felt extremely energized or invincible even with little sleep.",
-  "I’ve found it difficult to tell what’s real and what’s not.",
-  "My emotions have shifted quickly from joy to fear or sadness without reason.",
-  "I’ve had intrusive thoughts about my baby that scared or disturbed me.",
-  "I’ve felt detached from my baby or unsure if the baby is mine.",
-  "I’ve had strong feelings of being watched, judged, or followed.",
-  "I’ve felt my mind going blank or unable to think clearly.",
-  "I’ve experienced sudden bursts of fear or panic without a clear reason.",
-  "I’ve said or done things that didn’t feel like “me.”",
-  "I’ve struggled to recognize familiar people or surroundings."
-];
+  <script>
+    const statements = [
+      "I’ve felt unusually confused or disoriented about time, place, or people.",
+      "I’ve noticed or heard things that others said they couldn’t see or hear.",
+      "I’ve felt that people or forces were trying to control my thoughts or actions.",
+      "My thoughts have seemed jumbled, racing, or disconnected.",
+      "I’ve believed things others told me were unlikely or untrue.",
+      "I’ve felt extremely energized or invincible even with little sleep.",
+      "I’ve found it difficult to tell what’s real and what’s not.",
+      "My emotions have shifted quickly from joy to fear or sadness without reason.",
+      "I’ve had intrusive thoughts about my baby that scared or disturbed me.",
+      "I’ve felt detached from my baby or unsure if the baby is mine.",
+      "I’ve had strong feelings of being watched, judged, or followed.",
+      "I’ve felt my mind going blank or unable to think clearly.",
+      "I’ve experienced sudden bursts of fear or panic without a clear reason.",
+      "I’ve said or done things that didn’t feel like “me.”",
+      "I’ve struggled to recognize familiar people or surroundings."
+    ];
 
-const table = document.getElementById("survey-table");
+    const table = document.getElementById("survey");
 
-statements.forEach((text, i) => {
-  const row = document.createElement("tr");
-  row.innerHTML = `
-    <td>${i+1}</td>
-    <td>${text}</td>
-    <td colspan="5" class="rating-group">
-      ${[0,1,2,3,4].map(n => `
-        <div class="rating-btn" data-q="${i}" data-val="${n}">${n}</div>
-      `).join('')}
-    </td>
-  `;
-  table.appendChild(row);
-});
+    statements.forEach((text, i) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${text}</td>
+        <td class="rating">
+          ${[0, 1, 2, 3, 4]
+            .map(n => `<button data-q="${i}" data-v="${n}">${n}</button>`)
+            .join("")}
+        </td>
+      `;
+      table.appendChild(row);
+    });
 
-const ratingBtns = document.querySelectorAll(".rating-btn");
-ratingBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const q = btn.getAttribute("data-q");
-    document.querySelectorAll(`.rating-btn[data-q="${q}"]`).forEach(b => b.classList.remove("selected"));
-    btn.classList.add("selected");
-  });
-});
+    const buttons = document.querySelectorAll(".rating button");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const group = document.querySelectorAll(`button[data-q="${btn.dataset.q}"]`);
+        group.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
 
-document.getElementById("calc").addEventListener("click", () => {
-  let total = 0;
-  const selected = document.querySelectorAll(".rating-btn.selected");
-  selected.forEach(btn => total += parseInt(btn.getAttribute("data-val")));
-  const result = document.getElementById("result");
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      let total = 0;
+      let highest = 0;
+      for (let i = 0; i < statements.length; i++) {
+        const selected = document.querySelector(`button[data-q="${i}"].active`);
+        if (selected) {
+          const val = parseInt(selected.dataset.v);
+          total += val;
+          if (val > highest) highest = val;
+        }
+      }
 
-  let message = "";
-  if (total <= 8) message = "0–8: Likely within typical range for postpartum adjustment, but still take care of your rest and emotional health.";
-  else if (total <= 20) message = "9–20: Mild or occasional unusual experiences — consider sharing with a healthcare provider or counselor.";
-  else message = "21+: It’s important to seek professional help soon, as these experiences may signal early or developing postpartum psychosis or a related condition.";
+      const resultDiv = document.getElementById("result");
+      let feedback = "";
 
-  result.innerHTML = `Your total score: ${total}<br>${message}<br><br>
-  If you have thoughts of harming yourself or your baby, please seek emergency help immediately.`;
-});
+      if (total <= 8) {
+        resultDiv.className = "result low";
+        feedback = "Likely within typical range for postpartum adjustment, but still take care of your rest and emotional health.";
+      } else if (total <= 20) {
+        resultDiv.className = "result mild";
+        feedback = "Mild or occasional unusual experiences — consider sharing with a healthcare provider or counselor.";
+      } else {
+        resultDiv.className = "result high";
+        feedback = "It’s important to seek professional help soon, as these experiences may signal early or developing postpartum psychosis or a related condition.";
+      }
 
-document.getElementById("clear").addEventListener("click", () => {
-  document.querySelectorAll(".rating-btn").forEach(btn => btn.classList.remove("selected"));
-  document.getElementById("result").innerHTML = "";
-});
-</script>
+      if (highest >= 3)
+        feedback += " <br><strong>Note:</strong> Any item rated “3 = Often” or “4 = Always” deserves professional attention.";
+
+      resultDiv.innerHTML = `<h3>Your Score: ${total}</h3><p>${feedback}</p>`;
+      resultDiv.style.display = "block";
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      document.querySelectorAll(".rating button").forEach(b => b.classList.remove("active"));
+      document.getElementById("result").style.display = "none";
+    });
+
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const resultDiv = document.getElementById("result");
+      const score = resultDiv.textContent || "No results yet.";
+      const blob = new Blob([score], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "PPES_SelfCheck_Result.txt";
+      link.click();
+    });
+  </script>
 </body>
 </html>
